@@ -1,0 +1,30 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pdp/index",
+          "pathName": "pdp/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pdp/index",
+          "pathName": "pdp/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

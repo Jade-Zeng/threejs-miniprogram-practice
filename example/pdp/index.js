@@ -1,7 +1,8 @@
 // const { createScopedThreejs } = require('threejs-miniprogram')
 import { createScopedThreejs } from 'threejs-miniprogram'
 
-const { renderModel } = require('../test-cases/model')
+// const { renderModel } = require('../test-cases/model')
+import { pdpRender } from './pdpRender'
 
 Page({
   data: {},
@@ -13,8 +14,7 @@ Page({
         const canvas = res[0].node
         this.canvas = canvas
         const THREE = createScopedThreejs(canvas)
-        
-        renderModel(canvas, THREE)
+        pdpRender(canvas, THREE)
       })
   },
   touchStart(e) {

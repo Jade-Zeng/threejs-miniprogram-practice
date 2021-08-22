@@ -7,7 +7,7 @@ export function registerGLTFLoader(THREE) {
  * @author Takahiro / https://github.com/takahirox
  * @author Don McCurdy / https://www.donmccurdy.com
  */
-
+  console.log("注册新的GLTF加载器")
   THREE.GLTFLoader = (function () {
 
     function GLTFLoader(manager) {
@@ -25,8 +25,10 @@ export function registerGLTFLoader(THREE) {
       crossOrigin: 'anonymous',
 
       load: function (url, onLoad, onProgress, onError) {
-
+     
         var scope = this;
+      
+
 
         var resourcePath;
 
@@ -39,6 +41,7 @@ export function registerGLTFLoader(THREE) {
           resourcePath = this.path;
 
         } else {
+          console.log(url)
 
           resourcePath = THREE.LoaderUtils.extractUrlBase(url);
 
@@ -1550,6 +1553,7 @@ export function registerGLTFLoader(THREE) {
       this.primitiveCache = {};
 
       this.textureLoader = new THREE.TextureLoader(this.options.manager);
+      //console.log(THREE.TextureLoader)
       this.textureLoader.setCrossOrigin(this.options.crossOrigin);
 
       this.fileLoader = new THREE.FileLoader(this.options.manager);
@@ -1966,11 +1970,15 @@ export function registerGLTFLoader(THREE) {
     GLTFParser.prototype.loadTexture = function (textureIndex) {
 
       var parser = this;
+      //console.log(parser)
       var json = this.json;
       var options = this.options;
       var textureLoader = this.textureLoader;
 
-      var URL = window.URL || window.webkitURL;
+      //console.log("GLTF开始加载图片")
+      //console.log(window)
+
+      var URL =''// window.URL || window.webkitURL;
 
       var textureDef = json.textures[textureIndex];
 
@@ -2009,8 +2017,10 @@ export function registerGLTFLoader(THREE) {
       return Promise.resolve(sourceURI).then(function (sourceURI) {
 
         // Load Texture resource.
+       
 
         var loader = THREE.Loader.Handlers.get(sourceURI);
+        // console.log(sourceURI,loader)
 
         if (!loader) {
 
@@ -2022,7 +2032,12 @@ export function registerGLTFLoader(THREE) {
 
         return new Promise(function (resolve, reject) {
 
-          loader.load(resolveURL(sourceURI, options.path), resolve, undefined, reject);
+          var revsolvedURI = resolveURL(sourceURI, options.path)
+
+          //console.log(revsolvedURI)
+          console.log(loader)
+
+          loader.load( revsolvedURI, resolve, undefined, reject);
 
         });
 
@@ -3214,4 +3229,6 @@ export function registerGLTFLoader(THREE) {
     return GLTFLoader;
 
   })();
+
+ 
 }

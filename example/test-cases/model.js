@@ -37,7 +37,7 @@ export function renderModel(canvas, THREE) {
     loader.load('https://threejs.org/examples/models/gltf/RobotExpressive/RobotExpressive.glb', function (gltf) {
       model = gltf.scene;
       scene.add(model);
-      createGUI(model, gltf.animations)
+      // createGUI(model, gltf.animations)
     }, undefined, function (e) {
       console.error(e);
     });
@@ -50,8 +50,8 @@ export function renderModel(canvas, THREE) {
     const { OrbitControls } = registerOrbit(THREE)
     controls = new OrbitControls( camera, renderer.domElement );
 
-    camera.position.set( 5, 5, 10 );
-    controls.update();
+    // camera.position.set( 5, 5, 10 );
+    // controls.update();
   }
 
   function createGUI(model, animations) {
